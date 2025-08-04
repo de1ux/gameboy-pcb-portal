@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f5f5;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background: #2c3e50;
+    color: white;
+    overflow-y: auto;
+    border-right: 3px solid #34495e;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid #34495e;
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#search {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.pcb-list {
+    padding: 0.5rem;
+}
+
+.pcb-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    margin: 0.25rem 0;
+    background: #34495e;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.pcb-item:hover {
+    background: #4a6741;
+}
+
+.pcb-item.active {
+    background: #27ae60;
+}
+
+.pcb-item.has-kicad::before {
+    content: "⚡";
+    margin-right: 0.5rem;
+    color: #f39c12;
+}
+
+.pcb-name {
+    font-weight: 500;
+}
+
+/* Main Content */
+.main-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #ecf0f1;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.content-header h1 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.controls button {
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    border: 1px solid #bdc3c7;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.controls button:hover:not(:disabled) {
+    background: #ecf0f1;
+}
+
+.controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Scans Section - Top Half */
+.scans-section {
+    display: flex;
+    height: 50%;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.scan-container {
+    flex: 1;
+    padding: 1rem;
+    border-right: 1px solid #bdc3c7;
+}
+
+.scan-container:last-child {
+    border-right: none;
+}
+
+.scan-container h3 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.image-wrapper {
+    height: calc(100% - 2rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+.no-image {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Details Section - Bottom Half */
+.details-section {
+    display: flex;
+    height: 50%;
+}
+
+.kicad-container {
+    flex: 2;
+    padding: 1rem;
+    border-right: 1px solid #bdc3c7;
+}
+
+.info-container {
+    flex: 1;
+    padding: 1rem;
+}
+
+.kicad-container h3,
+.info-container h3 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.kicad-wrapper {
+    height: calc(100% - 2rem);
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    position: relative;
+}
+
+kicanvas-embed {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.no-kicad {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #6c757d;
+    font-style: italic;
+}
+
+.info-content {
+    height: calc(100% - 2rem);
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.info-content p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.info-content strong {
+    color: #2c3e50;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 25%;
+    }
+    
+    .main-content {
+        width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: 30%;
+    }
+    
+    .main-content {
+        width: 100%;
+        height: 70%;
+    }
+    
+    .scans-section {
+        flex-direction: column;
+    }
+    
+    .details-section {
+        flex-direction: column;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.hidden {
+    display: none !important;
+}

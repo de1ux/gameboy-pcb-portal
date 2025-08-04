@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo PCB Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="kicanvas.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>PCB Models</h2>
+                <input type="text" id="search" placeholder="Search PCBs..." />
+            </div>
+            <div class="pcb-list" id="pcbList">
+                <!-- PCB items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="content-header">
+                <h1 id="currentPcb">Select a PCB Model</h1>
+                <div class="controls">
+                    <button id="prevBtn" disabled>&lt; Previous</button>
+                    <button id="nextBtn" disabled>Next &gt;</button>
+                </div>
+            </div>
+
+            <!-- Top Half: Front and Back Scans -->
+            <div class="scans-section">
+                <div class="scan-container">
+                    <h3>Front Scan</h3>
+                    <div class="image-wrapper">
+                        <img id="frontScan" src="" alt="Front scan" />
+                        <div class="no-image" id="frontNoImage">No front scan available</div>
+                    </div>
+                </div>
+                <div class="scan-container">
+                    <h3>Back Scan</h3>
+                    <div class="image-wrapper">
+                        <img id="backScan" src="" alt="Back scan" />
+                        <div class="no-image" id="backNoImage">No back scan available</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Half: KiCad and Additional Info -->
+            <div class="details-section">
+                <div class="kicad-container">
+                    <h3>KiCad Design</h3>
+                    <div class="kicad-wrapper">
+                        <kicanvas-embed id="kicanvas" controls="basic" style="width: 100%; height: 100%; display: none;"></kicanvas-embed>
+                        <div class="no-kicad" id="noKicad">No KiCad file available</div>
+                    </div>
+                </div>
+                <div class="info-container">
+                    <h3>Board Information</h3>
+                    <div class="info-content" id="boardInfo">
+                        <p>Select a PCB to view details</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

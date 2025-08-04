@@ -1,0 +1,3 @@
+[submodule "NintendoPCB"]
+	path = NintendoPCB
+	url = git@github.com:Chase-san/NintendoPCB.git
