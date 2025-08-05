@@ -1,6 +1,6 @@
 # gameboy-pcb-portal
 
-See
+> Visit https://de1ux.github.io/gameboy-pcb-portal/
 
 ## About
 
